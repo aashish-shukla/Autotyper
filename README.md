@@ -3,7 +3,7 @@
 [![macOS](https://img.shields.io/badge/macOS-Compatible-blue.svg)](https://www.apple.com/macos/)
 [![Python](https://img.shields.io/badge/Python-3.6+-green.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-3.1-red.svg)](https://github.com/aashish-shukla/Autotyper)
+[![Version](https://img.shields.io/badge/Version-3.1-red.svg)](https://github.com/aashish-shukla/Autotyper-for-MacOS)
 [![GitHub](https://img.shields.io/badge/GitHub-aashish--shukla-black.svg)](https://github.com/aashish-shukla)
 
 > **Human-like clipboard auto-typing tool for macOS with hotkey controls and natural typing simulation**
@@ -97,7 +97,7 @@ Fallback Hotkeys (if Function Keys fail):
 ### Quick Install
 ```bash
 # Clone the repository
-git clone https://github.com/aashish-shukla/Autotyper.git
+git clone https://github.com/aashish-shukla/Autotyper-for-MacOS.git
 cd Autotyper
 
 # Install required dependencies
@@ -523,14 +523,14 @@ Requirements:
 **Aashish Shukla**
 - 🌐 **GitHub**: [@aashish-shukla](https://github.com/aashish-shukla)
 - 📧 **Email**: [Contact via GitHub](https://github.com/aashish-shukla)
-- 🐦 **Project**: [AutoTyper Repository](https://github.com/aashish-shukla/Autotyper)
+- 🐦 **Project**: [AutoTyper Repository](https://github.com/aashish-shukla/Autotyper-for-MacOS)
 
 ## 📞 Support & Community
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/aashish-shukla/Autotyper/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/aashish-shukla/Autotyper/discussions)
-- ⭐ **Feature Requests**: [GitHub Issues](https://github.com/aashish-shukla/Autotyper/issues/new?template=feature_request.md)
-- 📖 **Documentation**: [GitHub Wiki](https://github.com/aashish-shukla/Autotyper/wiki)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/aashish-shukla/Autotyper-for-MacOS/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/aashish-shukla/Autotyper-for-MacOS/discussions)
+- ⭐ **Feature Requests**: [GitHub Issues](https://github.com/aashish-shukla/Autotyper-for-MacOS/issues/new?template=feature_request.md)
+- 📖 **Documentation**: [GitHub Wiki](https://github.com/aashish-shukla/Autotyper-for-MacOS/wiki)
 
 ## 🔗 Related Projects
 
@@ -563,8 +563,8 @@ Status: ✅ Actively Maintained
 
 **⭐ Star this repository if AutoTyper helped you!**
 
-[![GitHub stars](https://img.shields.io/github/stars/aashish-shukla/Autotyper.svg?style=social&label=Star)](https://github.com/aashish-shukla/Autotyper)
-[![GitHub forks](https://img.shields.io/github/forks/aashish-shukla/Autotyper.svg?style=social&label=Fork)](https://github.com/aashish-shukla/Autotyper/fork)
+[![GitHub stars](https://img.shields.io/github/stars/aashish-shukla/Autotyper.svg?style=social&label=Star)](https://github.com/aashish-shukla/Autotyper-for-MacOS)
+[![GitHub forks](https://img.shields.io/github/forks/aashish-shukla/Autotyper.svg?style=social&label=Fork)](https://github.com/aashish-shukla/Autotyper-for-MacOS/fork)
 
 Made with ❤️ for the macOS community by [Aashish Shukla](https://github.com/aashish-shukla)
 
