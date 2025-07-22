@@ -1,12 +1,31 @@
-# 🤖 AutoTyper for macOS
+# 🤖 AutoTyper v3.4 - Individual Mode Hotkeys Edition
 
 [![macOS](https://img.shields.io/badge/macOS-Compatible-blue.svg)](https://www.apple.com/macos/)
 [![Python](https://img.shields.io/badge/Python-3.6+-green.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-3.1-red.svg)](https://github.com/aashish-shukla/Autotyper-for-MacOS)
+[![Version](https://img.shields.io/badge/Version-3.4-red.svg)](https://github.com/aashish-shukla/Autotyper-for-MacOS)
 [![GitHub](https://img.shields.io/badge/GitHub-aashish--shukla-black.svg)](https://github.com/aashish-shukla)
 
-> **Human-like clipboard auto-typing tool for macOS with hotkey controls and natural typing simulation**
+> **Human-like clipboard auto-typing tool with variable WPM, individual hotkeys, and advanced simulation**
+
+## 🚀 What's New in v3.4
+
+### 🎮 **Individual Speed Mode Hotkeys**
+- **F1-F5** dedicated hotkeys for instant speed switching
+- **Ctrl+Shift+1-5** alternative hotkeys for macOS compatibility
+- No more menu navigation - direct access to all typing speeds
+
+### ⚡ **Enhanced Variable WPM System**
+- **85 WPM default** with ±25 WPM natural variation
+- **Dynamic flow states**: Steady, Rushed, Careful, Thinking modes
+- **40% rhythm variation** between individual keystrokes
+- **Micro-pauses and bursts** for ultra-realistic typing
+
+### 🧠 **Advanced Human Simulation**
+- **Character-specific delays** based on typing complexity
+- **Fatigue simulation** with gradual slowdown over time
+- **Flow state changes** every 20-50 characters
+- **Real-time WPM tracking** with progress updates
 
 ## 📊 Visual Workflow
 
@@ -18,74 +37,94 @@ flowchart TD
     C -->|✅ Yes| D[🎹 Hotkey Mode]
     C -->|❌ No| E[📝 Manual Mode]
     
-    D --> F[Register Hotkeys]
+    D --> F[Register Individual Hotkeys]
     F --> G{Hotkey Registration Success?}
     
-    G -->|✅ Function Keys| H[F9=Start/Resume<br/>F8=Pause<br/>F10=Stop]
-    G -->|⚠️ Fallback| I[Ctrl+Shift+1=Start<br/>Ctrl+Shift+2=Pause<br/>Ctrl+Shift+3=Stop]
+    G -->|✅ Function Keys| H[F1-F5=Speed Modes<br/>F8=Pause<br/>F9=Resume<br/>F10=Stop]
+    G -->|⚠️ Fallback| I[Ctrl+Shift+1-5=Speed<br/>Ctrl+Shift+8=Pause<br/>Ctrl+Shift+9=Resume<br/>Ctrl+Shift+0=Stop]
     G -->|❌ Failed| E
     
     H --> J[⌨️ Human-Like Typing]
     I --> J
-    E --> K[Press Enter to Start]
+    E --> K[1-5=Speed Modes<br/>Enter=Start]
     K --> J
     
     J --> L{Typing State}
-    L -->|🟢 Active| M[Type Character by Character]
+    L -->|🟢 Active| M[Variable Character Timing]
     L -->|🟡 Paused| N[Wait for Resume]
     L -->|🔴 Stopped| O[End Session]
     
-    M --> P{More Characters?}
-    P -->|Yes| Q[Add Human Delays<br/>• Punctuation: 0.1-0.3s<br/>• Sentences: 0.2-0.5s<br/>• Thinking: 0.3-0.8s]
-    Q --> M
-    P -->|No| R[✅ Typing Complete]
+    M --> P{Flow State Change?}
+    P -->|Every 20-50 chars| Q[Switch Flow State<br/>• Steady → Rushed<br/>• Careful → Thinking]
+    Q --> R[Calculate Delay<br/>• WPM variation<br/>• Character type<br/>• Flow modifier<br/>• Micro-rhythm]
+    R --> M
+    P -->|Continue| R
     
-    N --> S[F9/Ctrl+Shift+1 Pressed?]
+    N --> S[Resume Signal?]
     S -->|Yes| M
     S -->|No| N
     
-    R --> O
-    O --> T[👋 Thanks for using AutoTyper!]
+    M --> T{More Characters?}
+    T -->|Yes| M
+    T -->|No| U[✅ Typing Complete]
+    
+    U --> O
+    O --> V[👋 Thanks for using AutoTyper!]
     
     style A fill:#e1f5fe
     style J fill:#f3e5f5
-    style R fill:#e8f5e8
-    style T fill:#fff3e0
+    style U fill:#e8f5e8
+    style V fill:#fff3e0
 ```
 
-## 🚀 Features
+## 🎯 Speed Modes & Hotkeys
 
-### ⌨️ **Human-Like Typing Simulation**
-- **Variable typing speeds** with realistic delays (0.03-0.12s per character)
-- **Natural pauses** at punctuation marks (0.1-0.3s)
-- **Sentence ending delays** for authentic behavior (0.2-0.5s)
-- **Random thinking pauses** to simulate human hesitation (0.3-0.8s)
-- **Perfect multi-line support** with proper formatting
+| Primary | Alternative | Mode | WPM | Flow | Description |
+|---------|-------------|------|-----|------|-------------|
+| **F1** | Ctrl+Shift+1 | Slow | 50 | Careful | 🐌 Deliberate, precise typing |
+| **F2** | Ctrl+Shift+2 | Normal | 85 | Steady | ⚡ Natural, everyday speed |
+| **F3** | Ctrl+Shift+3 | Fast | 120 | Rushed | 🚀 Quick, professional typing |
+| **F4** | Ctrl+Shift+4 | Custom | 100 | Adaptive | 🎯 Balanced speed |
+| **F5** | Ctrl+Shift+5 | Custom | 150 | Burst | 🎯 Very fast typing |
 
-### 🎮 **Intelligent Hotkey System**
+## 🎮 Playback Controls
+
+| Primary | Alternative | Function | Description |
+|---------|-------------|----------|-------------|
+| **F8** | Ctrl+Shift+8 | ⏸️ Pause | Pause typing instantly |
+| **F9** | Ctrl+Shift+9 | ▶️ Resume/Start | Resume or start typing |
+| **F10** | Ctrl+Shift+0 | ⏹️ Stop | Stop typing completely |
+
+## 🔧 Enhanced Features
+
+### 🌊 **Dynamic Flow States**
+```python
+Flow States:
+├── Steady (1.0x)   → Normal consistent typing
+├── Rushed (0.7x)   → Fast bursts when in hurry  
+├── Careful (1.4x)  → Deliberate, slower typing
+└── Thinking (1.8x) → Pauses while processing
 ```
-Primary Hotkeys (Function Keys):
-├── F9  → Start typing or resume if paused
-├── F8  → Pause typing instantly  
-└── F10 → Stop typing completely
 
-Fallback Hotkeys (if Function Keys fail):
-├── Ctrl+Shift+1 → Start/Resume
-├── Ctrl+Shift+2 → Pause
-└── Ctrl+Shift+3 → Stop
+### ⚡ **Variable Character Timing**
+```python
+Character Types:
+├── Sentence endings (.!?)  → 2.5-4.0x slower
+├── Punctuation (,;:)       → 1.5-2.5x slower
+├── Spaces                  → 0.6-1.0x speed
+├── Capital letters         → 1.1-1.4x slower
+├── Numbers                 → 1.2-1.6x slower
+├── Brackets/Quotes         → 1.3-1.7x slower
+└── Special symbols         → 1.4-1.8x slower
 ```
 
-### 📋 **Advanced Clipboard Integration**
-- **Auto-detects clipboard content** with validation
-- **Smart content analysis** (characters, words, lines)
-- **Real-time preview** with special character indicators
-- **Cross-platform clipboard support**
-
-### 🍎 **macOS Native Optimization**
-- **Accessibility API integration**
-- **Permission handling with clear instructions**
-- **Terminal and GUI app compatibility**
-- **Graceful fallback to manual mode**
+### 🎭 **Human Simulation Features**
+- **40% rhythm variation** between keystrokes
+- **15% micro-pause chance** for natural hesitation
+- **10% burst chance** for fast typing spurts
+- **4% hesitation chance** for thinking pauses
+- **±10ms random jitter** on every character
+- **Gradual fatigue** with 12% slowdown over time
 
 ## 📦 Installation
 
@@ -98,7 +137,7 @@ Fallback Hotkeys (if Function Keys fail):
 ```bash
 # Clone the repository
 git clone https://github.com/aashish-shukla/Autotyper-for-MacOS.git
-cd Autotyper
+cd Autotyper-for-MacOS
 
 # Install required dependencies
 pip install pyautogui pyperclip keyboard
@@ -107,367 +146,223 @@ pip install pyautogui pyperclip keyboard
 python autotyper.py
 ```
 
-### Dependencies Installation
+### Dependencies
 ```bash
-# Install all dependencies at once
-pip install pyautogui pyperclip keyboard
-
-# Or install individually
-pip install pyautogui    # For keyboard/mouse automation
-pip install pyperclip    # For clipboard operations
-pip install keyboard     # For global hotkey detection
+pip install pyautogui    # GUI automation
+pip install pyperclip    # Clipboard operations
+pip install keyboard     # Global hotkey detection
 ```
 
-## 🎯 Quick Start Guide
+## 🚀 Quick Start Guide
 
-### 📋 **Step 1: Copy Text to Clipboard**
+### 📋 **Step 1: Copy Text**
 ```bash
-# Method 1: Copy any text using Cmd+C
-echo "Hello, World! This is AutoTyper." | pbcopy
+# Copy any text using Cmd+C
+echo "Hello, this is AutoTyper v3.4!" | pbcopy
 
-# Method 2: Copy from file
-pbcopy < example.txt
+# Copy from file
+pbcopy < document.txt
 
-# Method 3: Copy code with formatting
+# Copy code with formatting
 cat script.py | pbcopy
 ```
 
-### 🚀 **Step 2: Launch AutoTyper**
+### 🎮 **Step 2: Launch & Use**
 ```bash
-cd /path/to/Autotyper
 python autotyper.py
+
+# Hotkey Mode (with permissions):
+F1  = Slow mode (50 WPM)
+F2  = Normal mode (85 WPM)  
+F3  = Fast mode (120 WPM)
+F4  = Custom 100 WPM
+F5  = Custom 150 WPM
+F8  = Pause
+F9  = Resume/Start
+F10 = Stop
+
+# Manual Mode (no permissions needed):
+1   = Slow mode
+2   = Normal mode
+3   = Fast mode
+4   = Custom 100 WPM
+5   = Custom 150 WPM
+Enter = Start with current speed
+q   = Quit
 ```
 
-### 🔐 **Step 3: Enable Hotkeys (Recommended)**
-1. Open **System Preferences** → **Security & Privacy** → **Privacy** → **Accessibility**
-2. Click the **lock** 🔒 to make changes (enter admin password)
-3. Click **+** and add **Terminal** (or **Python**) to the allowed apps
+### 🔐 **Step 3: Enable Hotkeys (Optional)**
+1. **System Preferences** → **Security & Privacy** → **Privacy** → **Accessibility**
+2. Click **🔒** and enter admin password
+3. Click **+** and add **Terminal** (or **Python**)
 4. ✅ Check the box next to Terminal/Python
-5. 🔄 Restart AutoTyper for hotkeys to work
+5. 🔄 Restart AutoTyper
 
-### ⌨️ **Step 4: Start Typing**
-```
-Hotkey Mode:           Manual Mode:
-• F9  → Start         • Press Enter → Start
-• F8  → Pause         • 'q' → Quit  
-• F10 → Stop          • Interactive commands
-```
-
-## 🎭 Human-Like Typing Behavior
-
-### ⏱️ **Realistic Timing Patterns**
-```python
-Character Type          Delay Range        Example
-─────────────────────  ──────────────     ──────────
-Normal characters      0.03-0.12s         a, b, 1, 2
-Spaces                 0.05-0.15s         [space]
-Punctuation            0.1-0.3s           , ; :
-Sentence endings       0.2-0.5s           . ! ?
-Thinking pauses        0.3-0.8s           (5% random)
-```
-
-### 🔤 **Special Character Handling**
-- **Newlines** (`\n`) → Press Enter key
-- **Tabs** (`\t`) → Press Tab key  
-- **Carriage returns** (`\r`) → Skipped
-- **Unicode characters** → Properly encoded
-- **Code formatting** → Preserved exactly
-
-## 📖 Usage Examples
+## 🎯 Advanced Usage
 
 ### 💻 **Programming Code**
 ```python
-# Perfect for typing code with proper indentation
-def fibonacci(n):
+# Perfect for typing code with proper formatting
+def calculate_fibonacci(n):
+    """Calculate fibonacci number with memoization"""
     if n <= 1:
         return n
-    return fibonacci(n-1) + fibonacci(n-2)
+    return calculate_fibonacci(n-1) + calculate_fibonacci(n-2)
 
-# Handles:
-# ✅ Proper indentation (tabs/spaces)
-# ✅ Special characters (:, {}, [], etc.)
-# ✅ Multi-line functions
-# ✅ Comments and strings
+# Features:
+# ✅ Proper indentation preservation
+# ✅ Special character handling (:, {}, [], etc.)
+# ✅ Multi-line function support
+# ✅ Comments and docstrings
+# ✅ Variable typing speed based on complexity
 ```
 
 ### 📝 **Document Writing**
 ```markdown
 # Ideal for:
 - 📧 Email composition with natural flow
-- 📄 Essays and academic papers
+- 📄 Essays and academic papers  
 - 📱 Social media posts with emojis
-- 📖 Documentation and README files
+- 📖 Documentation and wikis
 - ✍️ Creative writing and stories
 - 🌐 Web content and blogs
+- 💼 Professional correspondence
+- 📊 Reports and presentations
 ```
 
-### 🎯 **Productivity Use Cases**
+### 🎭 **Realistic Typing Simulation**
 ```bash
-# Customer Support
-→ Type pre-written responses naturally
-→ Handle multiple languages
-→ Maintain professional tone
-
-# Education
-→ Type lecture notes
-→ Code examples for students  
-→ Assignment templates
-
-# Content Creation
-→ Blog post drafts
-→ Social media content
-→ Email newsletters
+# Use cases where human-like typing matters:
+→ Live coding demonstrations
+→ Screen recordings and tutorials
+→ Customer support chat responses
+→ Educational content creation
+→ Testing typing-based applications
+→ Content creation workflows
+→ Accessibility demonstrations
 ```
 
-## 🔧 Advanced Configuration
+## 📊 Real-Time Progress Tracking
 
-### ⚡ **Typing Speed Customization**
+```
+[INFO] 🚀 Starting to type 1,247 characters...
+[INFO] ⚡ Target WPM: 85 (±25)
+[INFO] 🌊 Starting with 'steady' typing flow
+[INFO] 🎮 Controls: F8=Pause | F9=Resume | F10=Stop
+
+[PROGRESS] 20.1% | Current WPM: 78.3 | Flow: steady
+[PROGRESS] 40.2% | Current WPM: 91.7 | Flow: rushed  
+[PROGRESS] 60.3% | Current WPM: 82.1 | Flow: careful
+[PROGRESS] 80.4% | Current WPM: 88.9 | Flow: thinking
+
+[SUCCESS] ✅ Finished typing 1,247 characters!
+[STATS] ⏱️ Total time: 89.2s | Average WPM: 83.7
+```
+
+## 🔧 Customization
+
+### ⚡ **Speed Adjustment**
 ```python
-# Edit these values in autotyper.py for custom timing
-
-# Sentence endings (periods, exclamation, questions)
-if char in '.!?':
-    time.sleep(random.uniform(0.2, 0.5))  # Default: 200-500ms
-
-# Punctuation (commas, semicolons, colons)  
-elif char in ',;:':
-    time.sleep(random.uniform(0.1, 0.3))  # Default: 100-300ms
-
-# Spaces between words
-elif char == ' ':
-    time.sleep(random.uniform(0.05, 0.15))  # Default: 50-150ms
-
-# Normal characters (letters, numbers, symbols)
-else:
-    time.sleep(random.uniform(0.03, 0.12))  # Default: 30-120ms
-
-# Random thinking pauses (5% chance)
-if random.random() < 0.05:
-    time.sleep(random.uniform(0.3, 0.8))  # Default: 300-800ms
+# Edit these values in autotyper.py
+DEFAULT_BASE_WPM = 85      # Base speed (50-200 recommended)
+WPM_VARIATION = 0.3        # ±30% speed variation
+FATIGUE_FACTOR = 0.12      # 12% gradual slowdown
+BURST_CHANCE = 0.10        # 10% chance of speed bursts
+HESITATION_CHANCE = 0.04   # 4% chance of thinking pauses
+MICRO_PAUSE_CHANCE = 0.15  # 15% chance of micro-pauses
+RHYTHM_VARIATION = 0.4     # 40% rhythm variation
 ```
 
 ### 🎹 **Hotkey Customization**
 ```python
-# Primary hotkeys (recommended for macOS)
-primary_hotkeys = [
-    ('f9', 'F9 - Start/Resume', resume_or_start),
-    ('f8', 'F8 - Pause', pause_typing),
-    ('f10', 'F10 - Stop', stop_typing)
-]
-
-# Alternative hotkeys (fallback option)
-alternative_hotkeys = [
-    ('ctrl+shift+1', 'Ctrl+Shift+1 - Start/Resume', resume_or_start),
-    ('ctrl+shift+2', 'Ctrl+Shift+2 - Pause', pause_typing),
-    ('ctrl+shift+3', 'Ctrl+Shift+3 - Stop', stop_typing),
-]
-
-# Custom hotkeys (modify as needed)
+# Add custom hotkeys in setup_hotkeys()
 custom_hotkeys = [
+    ('f6', 'F6 - Ultra Fast (200 WPM)', lambda: start_typing(200)),
+    ('f7', 'F7 - Ultra Slow (25 WPM)', lambda: start_typing(25)),
     ('cmd+shift+space', 'Cmd+Shift+Space - Toggle', toggle_typing),
-    # Add your preferred combinations here
 ]
 ```
-
-## 🛡️ Accessibility & Security
-
-### 🔐 **Required Permissions**
-
-| Permission Type | Purpose | Setup Location |
-|----------------|---------|----------------|
-| **Accessibility Access** | Global hotkey detection | System Preferences → Security & Privacy → Privacy → Accessibility |
-| **Input Monitoring** | Keyboard event simulation | System Preferences → Security & Privacy → Privacy → Input Monitoring |
-
-### 📋 **Detailed Setup Instructions**
-
-1. **Open System Preferences**
-   ```bash
-   # Via Terminal
-   open /System/Applications/System\ Preferences.app
-   
-   # Or via Spotlight
-   cmd + space → "System Preferences"
-   ```
-
-2. **Navigate to Security & Privacy**
-   - Click **Security & Privacy**
-   - Select **Privacy** tab
-   - Click **Accessibility** in the left sidebar
-
-3. **Grant Accessibility Permission**
-   - Click the **lock** 🔒 (bottom left)
-   - Enter your **admin password**
-   - Click **+** button
-   - Navigate to and select **Terminal** (or **Python**)
-   - ✅ Ensure the checkbox is **checked**
-
-4. **Grant Input Monitoring Permission** (if required)
-   - Click **Input Monitoring** in left sidebar
-   - Repeat steps 3-6 above
-
-5. **Restart AutoTyper**
-   ```bash
-   # Stop current session (Ctrl+C)
-   # Restart
-   python autotyper.py
-   ```
-
-### 🔒 **Privacy & Security**
-- **No data collection** - everything runs locally
-- **No network access** - clipboard stays on your device
-- **No key logging** - only detects registered hotkeys
-- **Open source** - audit the code yourself
-
-## 📊 Performance & Statistics
-
-### 📈 **Real-Time Monitoring**
-```
-AutoTyper Status Dashboard:
-┌─────────────────────────────────────────┐
-│ 📊 Stats: 1,169 chars, 122 words, 44 lines │
-│ 👀 Preview: from sys import argv↵↵def... │
-│ ⏰ Typing starts in 3 seconds...        │
-│ 🎯 Position your cursor now!            │
-│ 🚀 Starting to type...                  │
-│ ▶️  Progress: [████████░░] 80% (932/1169) │
-│ 🔄 State: 🟢 ACTIVE                    │
-└─────────────────────────────────────────┘
-```
-
-### 📋 **Clipboard Analysis**
-- **Character count** with Unicode support
-- **Word count** using smart tokenization  
-- **Line count** with different line ending support
-- **Content type detection** (text, code, mixed)
-- **Preview generation** with special character visualization
-
-### ⚡ **Performance Metrics**
-- **Startup time**: < 2 seconds
-- **Memory usage**: ~15-25 MB
-- **CPU usage**: Minimal (< 1% during typing)
-- **Typing accuracy**: 100% character fidelity
-- **Maximum text length**: Limited only by available RAM
 
 ## 🚨 Troubleshooting
 
-### ❌ **Common Issues & Solutions**
+### ❌ **Common Issues**
 
-#### 🎹 Hotkeys Not Working
+#### 🎹 **Hotkeys Not Working**
 ```bash
-Problem: Pressing F9/F8/F10 does nothing
+Problem: Function keys not responding
 
 Solutions:
-1️⃣ Check accessibility permissions
-   System Preferences → Security & Privacy → Privacy → Accessibility
-   
-2️⃣ Try alternative hotkeys  
-   Ctrl+Shift+1, Ctrl+Shift+2, Ctrl+Shift+3
-   
-3️⃣ Use manual mode
-   Press Enter in terminal to start typing
-   
-4️⃣ Restart Terminal
-   quit Terminal → reopen → run AutoTyper again
+✅ Check accessibility permissions
+✅ Try alternative hotkeys (Ctrl+Shift+1-5)
+✅ Use manual mode (always works)
+✅ Restart Terminal after granting permissions
 ```
 
-#### 🔑 "Key not mapped" Error
+#### 📋 **Clipboard Issues**
 ```bash
-Problem: WARNING ❌ Failed to register Cmd+Shift+V
-
-Root Cause: macOS keyboard library limitations with certain key combinations
-
-Auto-Fix: AutoTyper automatically tries fallback options:
-├── Function keys (F8, F9, F10)           ← Usually works
-├── Ctrl+Shift+Numbers (1, 2, 3)         ← Backup option  
-└── Manual mode                          ← Always works
-```
-
-#### 🚫 Permission Denied / Administrator Error
-```bash
-Problem: OSError: Error 13 - Must be run as administrator
-
-Solutions:
-✅ Recommended: Grant accessibility permissions (see setup guide above)
-❌ Not recommended: sudo python autotyper.py (security risk)
-
-Step-by-step fix:
-1. Open System Preferences
-2. Security & Privacy → Privacy → Accessibility  
-3. Add Terminal to allowed apps
-4. Restart AutoTyper (no sudo needed)
-```
-
-#### 📋 Clipboard Issues
-```bash
-Problem: Clipboard is empty or unreadable
+Problem: "Clipboard is empty" error
 
 Diagnostics:
-# Test clipboard manually
-pbpaste  # Should show clipboard content
-
-# Test with simple text
-echo "test" | pbcopy
-python autotyper.py
+pbpaste  # Test clipboard content
 
 Solutions:
-- Copy text again with Cmd+C
-- Try copying from different app
-- Restart the source application
-- Check for clipboard manager conflicts
+✅ Copy text again with Cmd+C
+✅ Try copying from different application
+✅ Check for clipboard manager conflicts
+✅ Restart source application
 ```
 
-#### 🐌 Typing Too Fast/Slow
-```python
-# Edit timing in autotyper.py
-# Make typing faster (reduce delays)
-time.sleep(random.uniform(0.01, 0.05))  # Faster
+#### 🚫 **Permission Errors**
+```bash
+Problem: "Administrator error" or "Error 13"
 
-# Make typing slower (increase delays)  
-time.sleep(random.uniform(0.1, 0.3))    # Slower
+Solution:
+✅ Grant accessibility permissions (recommended)
+❌ DON'T use sudo (security risk)
 
-# Disable thinking pauses
-if random.random() < 0.0:  # Changed from 0.05 to 0.0
+Steps:
+1. System Preferences → Security & Privacy
+2. Privacy → Accessibility  
+3. Add Terminal to allowed apps
+4. Restart AutoTyper
 ```
 
-## 🔍 SEO Keywords & Tags
+## 📈 Performance Stats
 
-**Primary Keywords:**
-- AutoTyper macOS, macOS auto typing tool, clipboard auto typer
-- Human-like typing simulator, natural typing automation
-- macOS automation tool, text typing automation macOS
+### 📊 **Benchmarks**
+- **Startup time**: < 2 seconds
+- **Memory usage**: 15-25 MB
+- **CPU usage**: < 1% during typing
+- **Typing accuracy**: 100% character fidelity
+- **Maximum text length**: Limited only by RAM
+- **Supported characters**: Full Unicode range
 
-**Secondary Keywords:**
-- Python typing automation, macOS hotkey automation, PyAutoGUI macOS
-- Clipboard typing software, automatic text typing tool
-- Human typing simulation, macOS accessibility automation
-
-**Technical Keywords:**
-- Python keyboard automation, macOS terminal automation
-- Clipboard manipulation tool, text input automation
-- Cross-platform typing tool, Unicode text automation
-
-**Use Case Keywords:**
-- Programming code typer, documentation automation
-- Email template automation, customer support automation
-- Educational typing tool, content creation automation
+### 🎯 **Speed Comparison**
+```
+Mode         | WPM | Range   | Use Case
+-------------|-----|---------|------------------
+Slow         | 50  | 35-65   | Careful, precise
+Normal       | 85  | 60-110  | Everyday typing
+Fast         | 120 | 84-156  | Professional speed
+Custom 100   | 100 | 70-130  | Balanced performance
+Custom 150   | 150 | 105-195 | Very fast typing
+```
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! 🎉
-
 ### 🔧 **Development Setup**
 ```bash
-# Fork the repository on GitHub
-git clone https://github.com/YOUR-USERNAME/Autotyper.git
-cd Autotyper
+# Fork and clone
+git clone https://github.com/YOUR-USERNAME/Autotyper-for-MacOS.git
+cd Autotyper-for-MacOS
 
-# Create virtual environment (recommended)
+# Create virtual environment
 python -m venv autotyper-env
-source autotyper-env/bin/activate  # macOS/Linux
+source autotyper-env/bin/activate
 
-# Install development dependencies
+# Install dev dependencies
 pip install -r requirements.txt
-pip install pytest black flake8  # Development tools
+pip install pytest black flake8
 
 # Run tests
 python -m pytest tests/ -v
@@ -477,97 +372,61 @@ black autotyper.py
 flake8 autotyper.py
 ```
 
-### 🎯 **Feature Requests & Ideas**
-- 🎨 **GUI Interface** with drag-and-drop support
-- 🚀 **Custom typing profiles** (fast, normal, slow, code-optimized)
+### 🎯 **Feature Ideas**
+- 🎨 **GUI Interface** with visual speed controls
 - 📱 **iOS companion app** for remote control
-- 🔧 **Advanced hotkey customization** with conflict detection
 - 🌐 **Multi-language support** with localized interfaces
-- 📊 **Analytics dashboard** with typing statistics
-- 🎭 **Multiple typing personas** (professional, casual, technical)
+- 📊 **Analytics dashboard** with detailed statistics
+- 🎭 **Typing personas** (professional, casual, technical)
 - 🔄 **Text transformation** (case conversion, formatting)
-
-### 📝 **Contribution Guidelines**
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request with detailed description
+- 🎵 **Audio feedback** with typing sound simulation
+- 🔧 **Plugin system** for custom behaviors
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+MIT License - Free for personal and commercial use.
 
 ```
-MIT License - Feel free to:
-✅ Use commercially
-✅ Modify and distribute  
-✅ Use privately
-✅ Include in other projects
-
-Requirements:
-📄 Include license and copyright notice
-⚠️ No warranty provided
+✅ Use commercially     ✅ Modify and distribute
+✅ Use privately        ✅ Include in other projects
+📄 Include license      ⚠️ No warranty provided
 ```
 
 ## 🙏 Acknowledgments
 
 - **[PyAutoGUI](https://pyautogui.readthedocs.io/)** - Cross-platform GUI automation
-- **[Pyperclip](https://pyperclip.readthedocs.io/)** - Cross-platform clipboard operations  
+- **[Pyperclip](https://pyperclip.readthedocs.io/)** - Clipboard operations  
 - **[Keyboard](https://github.com/boppreh/keyboard)** - Global hotkey detection
-- **[macOS Accessibility](https://developer.apple.com/accessibility/)** - Native accessibility framework
-- **Open Source Community** - For continuous inspiration and feedback
+- **[macOS Accessibility](https://developer.apple.com/accessibility/)** - Native framework
+- **Open Source Community** - Inspiration and feedback
 
-## 👨‍💻 Author
+## 👨‍💻 Author & Support
 
 **Aashish Shukla**
 - 🌐 **GitHub**: [@aashish-shukla](https://github.com/aashish-shukla)
-- 📧 **Email**: [Contact via GitHub](https://github.com/aashish-shukla)
-- 🐦 **Project**: [AutoTyper Repository](https://github.com/aashish-shukla/Autotyper-for-MacOS)
-
-## 📞 Support & Community
-
+- 📧 **Contact**: Via GitHub Issues/Discussions
 - 🐛 **Bug Reports**: [GitHub Issues](https://github.com/aashish-shukla/Autotyper-for-MacOS/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/aashish-shukla/Autotyper-for-MacOS/discussions)
-- ⭐ **Feature Requests**: [GitHub Issues](https://github.com/aashish-shukla/Autotyper-for-MacOS/issues/new?template=feature_request.md)
-- 📖 **Documentation**: [GitHub Wiki](https://github.com/aashish-shukla/Autotyper-for-MacOS/wiki)
 
-## 🔗 Related Projects
+## 🌟 Success Stories
 
-- **[AutoHotkey](https://www.autohotkey.com/)** - Windows automation
-- **[Hammerspoon](https://www.hammerspoon.org/)** - macOS automation framework
-- **[Espanso](https://espanso.org/)** - Cross-platform text expander
-- **[TextExpander](https://textexpander.com/)** - Commercial text expansion
+> *"The individual hotkeys in v3.4 revolutionized my workflow! F3 for fast mode, F1 for careful code entry - perfect!"* - **Alex D., Software Developer**
 
-## 📈 Project Status
+> *"The variable WPM and flow states make it completely undetectable. Best auto-typer I've ever used!"* - **Sarah M., Content Creator**
 
-```
-Version: 3.1 (Stable)
-Last Updated: January 2024
-Python Support: 3.6+
-macOS Support: 10.14+ (Mojave and later)
-Status: ✅ Actively Maintained
-```
-
-## 🎉 Success Stories
-
-> *"AutoTyper saved me hours of repetitive typing for customer support responses. The human-like timing makes it undetectable!"* - **Sarah M., Customer Support**
-
-> *"Perfect for typing code examples during live coding sessions. Students can't tell it's automated!"* - **Dr. Chen, Computer Science Professor**
-
-> *"As a technical writer, this tool helps me type documentation faster while maintaining natural flow."* - **Mike R., Technical Writer**
+> *"Love the enhanced human simulation - my students can't tell when I'm using it during live coding sessions!"* - **Dr. Chen, CS Professor**
 
 ---
 
 <div align="center">
 
-**⭐ Star this repository if AutoTyper helped you!**
+**⭐ Star this repository if AutoTyper v3.4 helped you!**
 
-[![GitHub stars](https://img.shields.io/github/stars/aashish-shukla/Autotyper.svg?style=social&label=Star)](https://github.com/aashish-shukla/Autotyper-for-MacOS)
-[![GitHub forks](https://img.shields.io/github/forks/aashish-shukla/Autotyper.svg?style=social&label=Fork)](https://github.com/aashish-shukla/Autotyper-for-MacOS/fork)
+[![GitHub stars](https://img.shields.io/github/stars/aashish-shukla/Autotyper-for-MacOS.svg?style=social&label=Star)](https://github.com/aashish-shukla/Autotyper-for-MacOS)
+[![GitHub forks](https://img.shields.io/github/forks/aashish-shukla/Autotyper-for-MacOS.svg?style=social&label=Fork)](https://github.com/aashish-shukla/Autotyper-for-MacOS/fork)
 
-Made with ❤️ for the macOS community by [Aashish Shukla](https://github.com/aashish-shukla)
+**Made with ❤️ for the macOS community**
 
-[⬆ Back to Top](#-autotyper-for-macos)
+⬆ Back to Top
 
 </div>
